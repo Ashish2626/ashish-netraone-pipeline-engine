@@ -1,0 +1,38 @@
+# Netra-One Sample Pipeline Configuration
+# Perimeter patrol surveillance graph
+
+pipeline_id: "perimeter_patrol_v1"
+
+nodes:
+  - id: "source_rtsp"
+    type: "stream_source"
+    params:
+      stream_id: "cam_01"
+      target_fps: 30
+
+  - id: "preproc"
+    type: "frame_transform"
+    params:
+      resize: [640, 640]
+      normalize: true
+
+  - id: "detector"
+    type: "mock_inference_node"
+    params:
+      batch_size: 4
+      simulated_latency_ms: 12
+
+  - id: "geofence_filter"
+    type: "spatial_heuristic"
+    params:
+      restricted_zone: [[100, 100], [500, 500]]
+
+  - id: "alert_emitter"
+    type: "sink_alert"
+    params: {}
+
+edges:
+  - { from: "source_rtsp", to: "preproc" }
+  - { from: "preproc", to: "detector" }
+  - { from: "detector", to: "geofence_filter" }
+  - { from: "geofence_filter", to: "alert_emitter" }
