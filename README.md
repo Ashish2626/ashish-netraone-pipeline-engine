@@ -11,7 +11,7 @@
 ![asyncio](https://img.shields.io/badge/concurrency-asyncio-informational)
 ![Tests](https://img.shields.io/badge/tests-pytest-0A9EDC?logo=pytest&logoColor=white)
 
-**0xAstra Private Limited · Netra-One Tactical Defense AI**
+**Netra-One Tactical Defense AI**
 
 </div>
 
@@ -312,9 +312,3 @@ ashish-netraone-pipeline-engine/
 ```
 
 ---
-
-<div align="center">
-
-*Internal · 0xAstra Private Limited*
-
-</div>
